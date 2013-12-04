@@ -33,6 +33,8 @@
  */
 ?>
 
+<script type="text/javascript" src="<?php print_unescaped(OC_Helper::linkTo('imprint/js', 'config.php'));?>"></script>
+
 <!-- settings of app 'imprint' -->
 <form id="imprint">
 	<div class="section">
