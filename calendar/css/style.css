@@ -142,3 +142,15 @@ margin-bottom:4px;
 .ui-timepicker-hour-cell *, .ui-timepicker-minute-cell *{
 	text-overflow: clip !important;
 }
+
+/* Hide the advanced options in the event form */
+#advanced_options_bar {
+  cursor:pointer;
+  margin-top:0.5ex;
+  height:0.5ex;
+  vertical-align:middle;
+  border-top:1px solid #000;
+  -moz-box-shadow:-3px 0 7px #777;
+  -webkit-box-shadow:-3px 0 7px #777;
+  box-shadow: 0 0.5ex 1ex #777;
+}

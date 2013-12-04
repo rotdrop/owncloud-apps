@@ -1,4 +1,5 @@
 <script type="text/javascript" src="<?php print_unescaped(OC_Helper::linkTo('calendar/js', 'l10n.php'));?>"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
 
 <div id="notification" style="display:none;"></div>
 <div id="controls">

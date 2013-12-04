@@ -107,10 +107,13 @@ Calendar={
 			});
 			$( "#event" ).tabs({ selected: 0});
 			$('#event').dialog({
-				width : 500,
+				width : 520,
 				height: 600,
 				close : function(event, ui) {
 					$(this).dialog('destroy').remove();
+			                if ($('#event_googlemap').dialog('isOpen') == true){
+				                $('#event_googlemap').dialog('close').remove();
+			                }
 				}
 			});
 			Calendar.UI.Share.init();
@@ -226,6 +229,92 @@ Calendar={
 					$('#fullcalendar').fullCalendar('refetchEvents');
 				}
 			});
+		},
+		googlepopup:function(latlng, location) {
+			if ($('#event_googlemap').dialog('isOpen') == true){
+				$('#event_googlemap').dialog('close').remove();
+			}
+			$('#event_map').html('<div id="event_googlemap"></div>');
+			var mapOptions = {
+				zoom: 15,
+				center: latlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("event_googlemap"), mapOptions);
+			$('#event_googlemap').dialog({
+				title : 'Google Maps',
+				position : { my: "left top",
+					     at: "center center",
+					     of: "#event",
+					     offset: "0 0" },
+				width : 500,
+				height: 600,
+				close : function(event, ui) {
+					$(this).dialog('destroy').remove();
+				},
+				open  : function () {
+					var googlesearch = '';
+					if (location == '') {
+						googlesearch = latlng.lat()+','+latlng.lng();
+						location = t('calendar','Browser determined position')+'<br/>'+googlesearch;
+					} else {
+						googlesearch = location;
+					}
+					var infowindow = new google.maps.InfoWindow();
+					var marker = new google.maps.Marker({
+						map: map,
+						position: latlng
+					});
+					google.maps.event.addListener(
+						marker, 'click', function () {
+							infowindow.setContent(
+								location+'</br>'+
+									'<a href="https://maps.google.com/maps?q='+googlesearch+'" style="color:#00f;text-decoration:underline;" target="_blank">'+t('calendar','Detailed search at Google-Maps')+'</a>');
+							infowindow.open(map, marker);
+						});
+					google.maps.event.trigger(map, "resize");
+					map.setCenter(latlng);
+				},
+				resizeStop: function (event, ui) {
+					var center = map.getCenter();
+					google.maps.event.trigger(map, "resize");
+					map.setCenter(center);
+				}
+			});
+			
+		},
+		googlelocation:function() {
+			if ($('#event_googlemap').dialog('isOpen') == true){
+				$('#event_googlemap').dialog('close').remove();
+			}
+
+			var location = $('input[name=location]').val();
+			geocoder = new google.maps.Geocoder();
+			geocoder.geocode( { 'address': location}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					var latlng = results[0].geometry.location;
+				    	Calendar.UI.googlepopup(latlng, location);
+				} else {
+					var alerttext;
+					if (location) {
+						alerttext = t('calendar', 'Location not found:')+' '+location;
+					} else {
+						alerttext = t('calendar', 'No location specified.');
+					}
+					OC.dialogs.alert(alerttext, t('calendar','Unknown location'));
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(function(position) {
+							var latlng = new google.maps.LatLng(position.coords.latitude,
+											    position.coords.longitude);
+						    	Calendar.UI.googlepopup(latlng, '');
+						});
+					}
+				}
+			});
+		},
+		hideadvancedoptions:function(){
+			$("#advanced_options").slideUp('slow');
+			$("#advanced_options_button").css("display", "inline-block");
 		},
 		showadvancedoptions:function(){
 			$("#advanced_options").slideDown('slow');

@@ -81,20 +81,24 @@
 			</td>
 		</tr>
 	</table>
-	<input type="button" class="submit" value="<?php p($l->t("Advanced options")); ?>" id="advanced_options_button">
-	<div id="advanced_options" style="display: none;">
-		<hr>
-		<table>
+	<input type="button" class="submit" value="<?php p($l->t("Advanced options")); ?>" id="advanced_options_button" style="display: none;">
+	<div id="advanced_options">
+                 <a class="action" title="<?php echo $l->t('Click to hide location and description fields.'); ?>">
+                   <div id="advanced_options_bar"></div>
+                </a>
+                <div id="event_map"></div>                        
+ 		<table>
 			<tr>
-				<th width="85px"><?php p($l->t("Location"));?>:</th>
+				<th width="100px"><?php p($l->t("Location"));?>:</th>
 				<td>
 					<input type="text" style="width:350px;" size="100" placeholder="<?php p($l->t("Location of the Event"));?>" value="<?php p(isset($_['location']) ? $_['location'] : '') ?>" maxlength="100"  name="location" />
+                                        <a class="action google permanent" id="google_location" title="<?php echo $l->t("View the current location with Google-Maps"); ?>"><img alt="<?php echo $l->t("Location@Google"); ?>" src="<?php echo OCP\image_path('calendar','googlemaps.png'); ?>" class="png action permanent" style="width:2em;height:2em;padding:0em 0.3em 0.3em 0em;vertical-align:middle;"></a>
 				</td>
 			</tr>
-		</table>
-		<table>
+		<!-- </table> -->
+		<!-- <table> -->
 			<tr>
-				<th width="85px" style="vertical-align: top;"><?php p($l->t("Description"));?>:</th>
+				<th width="100px" style="vertical-align: top;"><?php p($l->t("Description"));?>:</th>
 				<td>
 					<textarea style="width:350px;height: 150px;" placeholder="<?php p($l->t("Description of the Event"));?>" name="description"><?php p(isset($_['description']) ? $_['description'] : '') ?></textarea>
 				</td>
