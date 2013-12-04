@@ -40,7 +40,13 @@ OCP\Util::addStyle  ( '3rdparty', 'chosen/chosen' );
 OCP\Util::addStyle  ( 'imprint',  'imprint' );
 
 OCP\Util::addScript ( '3rdparty', 'chosen/chosen.jquery.min' );
+OCP\Util::addScript ( 'imprint',  'imprint' );
 OCP\Util::addScript ( 'imprint',  'settings' );
+
+// TinyMCE stuff
+OCP\Util::addScript('imprint', 'tinymce/jquery.tinymce.min');
+OCP\Util::addScript('imprint', 'tinymce/tinymce.min');
+OCP\Util::addScript('imprint', 'tinymceinit');
 
 // fetch template
 $tmpl = new OCP\Template ( 'imprint', 'tmpl_settings' );

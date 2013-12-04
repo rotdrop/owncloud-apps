@@ -37,7 +37,10 @@ $(document).ready(function(){
 		OC.AppConfig.setValue('imprint','anonposition',$(this).val());
 	})
 	$('#imprint').find('#imprint-content').on('focusout',function(){
-		OC.AppConfig.setValue('imprint','content',$(this).val());
+		OC.AppConfig.setValue('imprint','content',$(this).val);
+	})
+	$('#imprint').find('#imprint-content').on('change',function(){
+		OC.AppConfig.setValue('imprint','content',$(this).val);
 	})
 
 	// initialize options with stored settings
@@ -50,4 +53,19 @@ $(document).ready(function(){
 	OC.AppConfig.getValue('imprint','content','',function(data){
 		$('#imprint #imprint-content').html(data);
 	});
+
+        // tinymce stuff. That was hard :(
+        myTinyMCE.config.language = IMPRINT.language;
+        myTinyMCE.config.setup = function(ed) {
+                var self = ed;
+                ed.on('init', function(e) {
+                        self.on('blur', function(e) {
+                                var content = self.getContent();
+		                OC.AppConfig.setValue('imprint', 'content', content);
+                                $('#imprint #imprint-content').val(content);
+                        });
+                });
+                $('#imprint-usage').hide();
+        };
+        $('#imprint #imprint-content').tinymce(myTinyMCE.config);
 })
