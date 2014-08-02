@@ -55,7 +55,7 @@ $(document).ready(function(){
 	});
 
         // tinymce stuff. That was hard :(
-        myTinyMCE.config.language = IMPRINT.language;
+        myTinyMCE.config.language = Imprint.language;
         myTinyMCE.config.setup = function(ed) {
                 var self = ed;
                 ed.on('init', function(e) {

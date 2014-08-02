@@ -31,8 +31,16 @@
 
 $l = new OC_L10n('imprint');
 
+OC::$CLASSPATH['Imprint\Config'] = OC_App::getAppPath('imprint') . '/lib/config.php';
+
+OCP\Util::connectHook('\OCP\Config', 'js', 'Imprint\Config', 'jsLoadHook');
+
 OCP\App::registerAdmin ( 'imprint', 'settings' );
 OCP\Util::addStyle  ( 'imprint', 'imprint' );
+
+// Hurray! There is a config hook!
+OCP\Util::connectHook('\OCP\Config', 'js', 'Imprint\Config', 'jsLoadHook');
+
 // workaround for OC-4.x's chaotoc header layout
 if (5>@reset(OCP\Util::getVersion()))
 	OCP\Util::addStyle  ( 'imprint', 'imprint-oc4' );

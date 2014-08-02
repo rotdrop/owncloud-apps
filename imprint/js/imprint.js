@@ -28,9 +28,9 @@
  * @author Claus-Justus Heine
  */
 
-var IMPRINT = IMPRINT || {};
+var Imprint = Imprint || {};
 
-(function(window, $, IMPRINT, undefined) {
-  IMPRINT.language = 'en';
-})(window, jQuery, IMPRINT);
+(function(window, $, Imprint, undefined) {
+  Imprint.language = 'en';
+})(window, jQuery, Imprint);
 
