@@ -31,6 +31,63 @@
 var Imprint = Imprint || {};
 
 (function(window, $, Imprint, undefined) {
-  Imprint.language = 'en';
+    Imprint.language = 'en';
+
+    /**
+     * Fills height and width of window. (more precise than height: 100%; or width:
+     * 100%;)
+     */
+    Imprint.fillWindow = function(selector) {
+	if (selector.length === 0) {
+	    return;
+	}
+	Imprint.fillHeight(selector);
+	var width = parseFloat($(window).width()) - selector.offset().left;
+	selector.css('width', width + 'px');
+	if (selector.outerWidth() > selector.width()) {
+	    selector.css('width', width
+			 - (selector.outerWidth() - selector.width()) + 'px');
+	}
+	console.warn("This function is deprecated! Use CSS instead");
+    };
+
+    /**
+     * Fills height of window. (more precise than height: 100%;)
+     */
+    Imprint.fillHeight = function(selector) {
+	if (selector.length === 0) {
+	    return;
+	}
+	var height = parseFloat($(window).height()) - selector.offset().top;
+	selector.css('height', height + 'px');
+	if (selector.outerHeight() > selector.height()) {
+	    selector.css('height', height
+			 - (selector.outerHeight() - selector.height()) + 'px');
+	}
+	console.warn("This function is deprecated! Use CSS instead");
+    }
+
+
 })(window, jQuery, Imprint);
+
+$('#imprint-frame').ready(function() {
+    $(window).resize(function() {
+	Imprint.fillWindow($('#imprint-container'));
+    });
+
+    $('#imprint-frame').load(function() {
+	Imprint.fillWindow($('#imprint-container'));
+    });
+
+    if (Imprint.mode == 'guest') {
+	$(window).resize();
+        $('#imprint-iframe').show();
+    } else {
+        $("#loader").show();
+        $("#loader").fadeOut(1500, function() {
+	    $(window).resize();
+            $('#imprint-iframe').show();
+        });
+    }
+});
 

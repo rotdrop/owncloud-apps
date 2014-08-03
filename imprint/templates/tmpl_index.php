@@ -33,6 +33,27 @@
  */
 ?>
 
+<div id="imprint-container">
+
+<?php
+
+  $l = new OC_L10n('imprint');
+  if ($_['mode'] == 'guest') {
+    echo '<div class="imprint-login-page">
+  <a href="'.OCP\Util::linkTo('','index.php').'">'.$l->t('Back to login page').'</a>
+</div>';
+  }
+
+?>
+
+<img src="<?php echo \OCP\Util::imagePath('imprint', 'loader.gif'); ?>" id="loader">
 <!-- an iframe holding the imprints content (safety reasons...) -->
-<iframe src="<?php p(OCP\Util::linkTo('imprint','content.php'));?>" 
-		width="100%" height="100%"></iframe>
+<iframe src="<?php p(OCP\Util::linkTo('imprint','content.php'));?>"
+	sandbox
+        id="imprint-iframe"
+        name="imprint"
+  	width="100%"
+	style="display:none;">
+</iframe>
+
+</div>

@@ -29,5 +29,5 @@
  */
 $(document).ready(function(){
 	var availableHeight = $('body#body-login').height()-$('body#body-login header').height();
-	$('body#body-login div#login').css({height:availableHeight+'px'});
+	$('body#body-login div.wrapper').css({height:availableHeight+'px'});
 })

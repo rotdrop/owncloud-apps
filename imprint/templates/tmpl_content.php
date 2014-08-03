@@ -37,13 +37,12 @@
 	<head>
 		<link rel="stylesheet" href="<?php p(OCP\Util::linkTo('imprint','css/content.css'));?>" type="text/css" media="screen" />
 		<link rel="stylesheet" href="<?php p(OCP\Util::linkTo('imprint','css/imprint.css'));?>" type="text/css" media="screen" />
-		<?php if (5>@reset(OCP\Util::getVersion())) { ?>
-			<link rel="stylesheet" href="<?php p(OCP\Util::linkTo('imprint','css/imprint-oc4.css'));?>" type="text/css" media="screen" />
-		<?php } ?>
 	</head>
-	<body id="imprint-content">
+	<body id="imprint-body">
+		<div id="imprint-content">
 <?php
 	print_unescaped ( $_['processed-content'] );
 ?>
+		</div>
 	</body>
 </html>

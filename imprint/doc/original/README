@@ -1,4 +1,4 @@
-/**
+*****
 * @package imprint an ownCloud app
 * @category base
 * @author Christian Reiner
@@ -19,18 +19,13 @@
 * You should have received a copy of the GNU Affero General Public
 * License along with this library.
 * If not, see <http://www.gnu.org/licenses/>.
-*
-*/
+*****
 
-/**
- * @file js/imprint_navigation_top.js
- * @brief Client side activity library
- * @author Christian Reiner
- */
-$(document).ready(function(){
-	var anchor=$('<a />');
-	anchor.attr('href',OC.linkTo('imprint','index.php'));
-	anchor.text(t("imprint","Legal notice"));
-	anchor.addClass('imprint-anchor').addClass('navigation-top');
-	$('#navigation #apps').before(anchor);
-})
+This imprint app implements a plugin for the ownCloud web application.
+It provides a very simply means to add a legal notice, an imprint to the
+framework. Such notice is required in some countries when offering a service
+on the internet.
+The app is kept extremely simple. No fancy configuration options, no complex
+setup. Just activate it, configure the notices content and where to place the
+reference, that's all.
+You can use plain text for content or use simple html layout.

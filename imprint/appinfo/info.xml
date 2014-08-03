@@ -39,10 +39,10 @@
 		The imprints content can be configured using plain text or html markup.
 		The app is simple but sufficient for the purpose. 
 	</description>
-	<version>0.1.15</version>
+	<version>1.0</version>
 	<licence>AGPL</licence>
-	<author>Christian Reiner</author>
-	<requiremin>4.93</requiremin>
+	<author>Christian Reiner and Claus-Justus Heine</author>
+	<requiremin>7.0</requiremin>
 		<types>
 			<base/>
 		</types>
