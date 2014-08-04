@@ -49,7 +49,7 @@
 <img src="<?php echo \OCP\Util::imagePath('imprint', 'loader.gif'); ?>" id="loader">
 <!-- an iframe holding the imprints content (safety reasons...) -->
 <iframe src="<?php p(OCP\Util::linkTo('imprint','content.php'));?>"
-	sandbox
+	sandbox="allow-popups"
         id="imprint-iframe"
         name="imprint"
   	width="100%"
