@@ -27,20 +27,14 @@
  * @author Christian Reiner
  */
 
-#imprint-iframe {
-	height: 100%;
-}
-
-#imprint-container {
-	position: fixed;
-}
-
 #imprint-frame {
 	height: 100%;
 }
 
 #imprint-container {
 	position: fixed;
+        height:100%;
+        width:inherit;
 }
 
 div.imprint-login-page {
