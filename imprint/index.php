@@ -40,6 +40,9 @@
 $tmpl_view = (\OCP\User::isLoggedIn()) ? 'user' : 'guest';
 // fetch content
 $tmpl = new \OCP\Template( 'imprint', 'tmpl_index', $tmpl_view );
+
+$tmpl->assign('mode', $tmpl_view);
+
 // render template
 $tmpl->printPage ( );
 ?>

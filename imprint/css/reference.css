@@ -27,6 +27,52 @@
  * @author Christian Reiner
  */
 
+#imprint-iframe {
+	height: 100%;
+}
+
+#imprint-container {
+	position: fixed;
+}
+
+#imprint-frame {
+	height: 100%;
+}
+
+#imprint-container {
+	position: fixed;
+}
+
+div.imprint-login-page {
+  margin-top: 1em;
+}
+
+div.imprint-login-page a {
+  font-weight: bold;
+  color: #CCC;
+}
+
+
+#loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 128px;
+  height: 14px;
+  margin-top: -7px; /* Half the height */
+  margin-left: -64px; /* Half the width */
+  display: none;
+}
+
+div.imprint-login-page {
+  margin-top: 1em;
+}
+
+div.imprint-login-page a {
+  font-weight: bold;
+  color: #CCC;
+}
+
 #header #owncloud,
 #header .menutoggle {
 	position: relative;
@@ -98,4 +144,5 @@ a.imprint-anchor.imprint-position-footer-left {
 a.imprint-anchor.imprint-position-header-right,
 a.imprint-anchor.imprint-position-footer-right {
 	float: right;
+        z-index: 1;
 }
