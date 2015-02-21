@@ -31,7 +31,6 @@
 
 // Session checks
 \OCP\App::checkAppEnabled('imprint');
-\OCP\Util::addScript('imprint', 'content');
 
 \OCP\App::setActiveNavigationEntry('imprint');
 \OCP\Util::addStyle('imprint', 'reference');
